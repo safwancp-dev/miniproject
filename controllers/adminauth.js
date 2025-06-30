@@ -25,7 +25,7 @@ const renderBanner=async(req,res)=>{
     }
 }
 
-// Handle banner creation
+// Handle banner 
 
 const addBanner=async(req,res)=>{
     try{
