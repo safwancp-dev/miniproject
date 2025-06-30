@@ -117,7 +117,7 @@ const adminlogin=async(req,res)=>{
             res.status(401).json(error)
             console.log("error token not created")
         }
-            res.cookie('admintoken', token, { httpOnly: false ,
+            res.cookie('admintoken', token, { httpOnly:false,
                 secure :true,
                  sameSite: 'strict',
             });
@@ -212,7 +212,7 @@ const updateOrderstatus=async(req,res)=>{
 
 
 const adminlogout=(req,res)=>{
-    res.clearCookie('token');
+    res.clearCookie('admintoken');
     console.log('admin logouted ')
   res.redirect('/admin/adminlogin');
 }
