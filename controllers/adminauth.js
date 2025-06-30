@@ -117,7 +117,7 @@ const adminlogin=async(req,res)=>{
             res.status(401).json(error)
             console.log("error token not created")
         }
-            res.cookie('token', token, { httpOnly: false ,
+            res.cookie('admintoken', token, { httpOnly: false ,
                 secure :true,
                  sameSite: 'strict',
             });
