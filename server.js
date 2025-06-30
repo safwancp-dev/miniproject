@@ -58,7 +58,7 @@ app.set('view engine', 'ejs'); // or the view engine you're using
 app.use(authenticateUser,cartCount)
 app.use(authenticateUser,wishlistCount)
 
-app.use('/home',userRouter)
+app.use('/',userRouter)
 app.use('/admin',adminRouter)
 
 
