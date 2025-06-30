@@ -1,6 +1,6 @@
 const express=require('express')
 const router=express.Router();
-const {renderhomepage,renderaboutpage,rendercontactus,rendersignuppage,signup,renderotppage,verifyOtp, renderloginpage,login,logout,renderforgotpassword,handleforgotpassword,renderresetpassword,handleresetpassword,getuserAccount,addAddress, deleteAddress, fetchValidCoupons, editProfile}= require('../controllers/useraauth');
+const {renderhomepage,renderaboutpage,rendercontactus,rendersignuppage,signup,renderotppage,verifyOtp, renderloginpage,login,logout,renderforgotpassword,handleforgotpassword,renderresetpassword,handleresetpassword,getuserAccount,addAddress, deleteAddress, fetchValidCoupons, editProfile}= require('../controllers/userauth');
 const authenticateUser=require('../middleware/userVerify')
 const{getShopProducts,viewProductdetails, getSearchShopItems, createReview}=require('../controllers/productController')
 
