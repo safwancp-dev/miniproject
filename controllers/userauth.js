@@ -91,7 +91,7 @@ const signup=async(req,res)=>{
         const saltroundes=10;
         const hashedpassword=await bcrypt.hash(password,saltroundes)
         const otp = crypto.randomInt(100000, 1000000);
-        const otpExpiry = Date.now() + 5 * 60 * 1000; // 5 minutes expiry (as you wanted earlier)
+        const otpExpiry = Date.now() + 5 * 60 * 1000; // 5 minutes expiry as you wanted earlier
         console.log(otp)
         
         console.log('hashedpassword',hashedpassword)
