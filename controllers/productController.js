@@ -33,7 +33,7 @@ const addCategory=async(req,res)=>{
 const getAddProduct=async(req,res)=>{
     try{
         const categories=await Category.find()
-        res.render('admin/addProduct',{categories})
+        res.render('admin/addproduct',{categories})
     }catch(err){
         console.log('error rendering product page',err)
         res.status(500).send('error loading product page')
