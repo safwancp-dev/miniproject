@@ -10,7 +10,7 @@ const { placeOrder, viewOrders, cancelOrder,paymentSuccess, applyCoupon, invoice
 const { submitContactform } = require('../controllers/contactControllers');
 
 
-router.get('/',authenticateUser,renderhomepage)
+router.get('/home',authenticateUser,renderhomepage)
 router.get('/about',authenticateUser,renderaboutpage)
 router.get('/contact-us',authenticateUser,rendercontactus)
 router.get('/login',renderloginpage)
