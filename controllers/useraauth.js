@@ -209,7 +209,7 @@ const login=async(req,res)=>{
 
 
             console.log("login succesfull")
-            res.redirect('/home')
+            res.redirect('/')
 
     }catch(err){
         res.status(500).send("error during login")
@@ -221,7 +221,7 @@ const login=async(req,res)=>{
 const logout=(req,res)=>{
     res.clearCookie('token', { httpOnly: true });
     console.log('user logouted successfully')
-    res.redirect('/home')
+    res.redirect('/')
 }
 
 

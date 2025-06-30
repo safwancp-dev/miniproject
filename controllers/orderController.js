@@ -205,7 +205,7 @@ const paymentSuccess=async(req,res)=>{
     return res.render('user/payment-success', { order: populatedOrder });
   }catch(err){
     console.error('payment success error',err)
-    res.redirect('/home')
+    res.redirect('/')
   }
 }
 
@@ -220,7 +220,7 @@ const viewOrders=async(req,res)=>{
     res.render('user/vieworders',{orders,user:userId})
   }catch(err){
     console.error('Error fetching orders:', err);
-    res.redirect('/home');
+    res.redirect('/');
   }
 }
 
