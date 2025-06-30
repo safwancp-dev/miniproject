@@ -212,7 +212,7 @@ const updateOrderstatus=async(req,res)=>{
 
 
 const adminlogout=(req,res)=>{
-    res.clearCookie('token');
+    res.clearCookie('admintoken');
     console.log('admin logouted ')
   res.redirect('/admin/adminlogin');
 }
