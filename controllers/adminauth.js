@@ -122,7 +122,8 @@ const adminlogin=async(req,res)=>{
                  sameSite: 'strict',
             });
 
-       
+     
+
         console.log('admin login successfull')
         res.redirect('/admin/dashboard')
     }catch(err){

@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-
+require('dotenv').config()
 const adminVerify = (req, res, next) => {
   const token = req.cookies["admintoken"]; // Check if token is present in cookies
 
