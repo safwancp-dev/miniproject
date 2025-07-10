@@ -66,23 +66,37 @@
 
     <div class="order-card">
       <p><span class="order-label">Order ID:</span> <span class="order-value"><%= orders._id %></span></p>
-      <p><span class="order-label">User:</span> <span class="order-value"><%= orders.user.fullName %> <%= orders.user.email %></span></p>
+
+      <p>
+        <span class="order-label">User:</span>
+        <span class="order-value">
+          <% if (orders.user) { %>
+            <%= orders.user.fullName %> (<%= orders.user.email %>)
+          <% } else { %>
+            <span class="text-danger">User not found</span>
+          <% } %>
+        </span>
+      </p>
+
       <p>
         <span class="order-label">Status:</span>
         <span class="badge bg-info text-dark badge-status"><%= orders.status %></span>
       </p>
+
       <p>
-        <span class="order-label">payment Status:</span>
+        <span class="order-label">Payment Status:</span>
         <span class="badge bg-info text-dark badge-status"><%= orders.paymentStatus %></span>
       </p>
+
       <p><span class="order-label">Total Amount:</span> <span class="order-value">₹<%= orders.totalAmount %></span></p>
+
       <p><span class="order-label">Order Date:</span> <span class="order-value"><%= orders.createdAt.toDateString() %></span></p>
 
       <h5 class="mt-4 mb-3 text-white border-bottom pb-2">Items</h5>
 
       <% orders.items.forEach(item => { %>
         <div class="product-item">
-          <img src="<%= item.product.image[0] %>" alt="<%= item.product.fullName %>">
+          <img src="<%= item.product.image && item.product.image[0] ? item.product.image[0] : '/images/no-image.png' %>" alt="<%= item.product.fullName || 'Product' %>">
           <div class="product-info text-white">
             <p><strong><%= item.product.fullName %></strong></p>
             <p>Price: ₹<%= item.product.price %></p>

@@ -10,7 +10,7 @@ const applyCoupon=async(req,res)=>{
     const {code,totalAmount}=req.body  // Getting the coupon code and total from the user
     const userId=req.user.userid
 
-    const coupon=await Coupon.findOne({code:couponCode.toUpperCae()}); // Search the coupon
+    const coupon=await Coupon.findOne({code:code.toUpperCae()}); // Search the coupon
     if(!coupon) return res.json({success:false,message:'invalid coupon code'})
 
     if(new Date(coupon.expiryDate)<new Date())
