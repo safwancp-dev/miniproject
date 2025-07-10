@@ -28,15 +28,19 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine','ejs')
 app.set('views',path.join(__dirname,'views'));
 app.use(express.static(path.join(__dirname,'public')))
+app.set('trust proxy', 1); // Enables secure cookies behind a proxy
 
 app.use(cors({Credential:true}))
 
 app.use(session({
-  secret: 'your-secret-key', // 🔒 replace with a secure random string
+  secret: 'your-secret-key',
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false, // 🔄 safer
   cookie: {
     maxAge: 1000 * 60 * 60 * 24, // 1 day
+    httpOnly: true,
+    sameSite: 'lax', // ✅ Helps Stripe redirects retain cookies
+    secure: false // ✅ Set to true in production with HTTPS
   }
 }));
 

@@ -119,10 +119,12 @@ const signup=async(req,res)=>{
           const token = jwt.sign({ userid: newUser._id, email: newUser.email }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
           // Send the JWT token as a cookie or in the response body
-           res.cookie('token', token, { httpOnly: false ,
-                secure :true,
-                 sameSite: 'strict',
-            });
+          res.cookie('token', token, {
+  httpOnly: true, // ✅ protects from XSS
+  secure: process.env.NODE_ENV === 'production', // ✅ works in dev and prod
+  sameSite: 'lax' // ✅ allows Stripe redirect to work
+});
+
 
           
         console.log("user saved successfully")
@@ -202,11 +204,13 @@ const login=async(req,res)=>{
             if(!token){
                 return res.status(500).json({msg:'error genarating token ,please try again '})
             }
-            res.cookie('token', token, { httpOnly: false ,
-                secure :true,
-                 sameSite: 'strict',
-            });
+            res.cookie('token', token, {
+  httpOnly: true, // ✅ protects from XSS
+  secure: process.env.NODE_ENV === 'production', // ✅ works in dev and prod
+  sameSite: 'lax' // ✅ allows Stripe redirect to work
+});
 
+            
 
             console.log("login succesfull")
             res.redirect('/')

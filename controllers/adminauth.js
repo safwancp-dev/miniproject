@@ -117,11 +117,13 @@ const adminlogin=async(req,res)=>{
             res.status(401).json(error)
             console.log("error token not created")
         }
-            res.cookie('admintoken', token, { httpOnly:false,
-                secure :true,
-                 sameSite: 'strict',
-                 maxAge:24*60*60*1000
-            });
+           res.cookie('admintoken', token, {
+  httpOnly: true, // ✅ prevent XSS — don't expose token to frontend JS
+  secure: process.env.NODE_ENV === 'production', // ✅ works for both dev and prod
+  sameSite: 'lax', // ✅ allows redirect and keeps cookie in cross-origin safe redirects
+  maxAge: 24 * 60 * 60 * 1000 // 1 day
+});
+
 
      
 
